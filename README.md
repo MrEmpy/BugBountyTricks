@@ -1,0 +1,2 @@
+# BugBountyTricks
+「🐞」Bug Bounty Tricks
