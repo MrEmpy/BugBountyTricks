@@ -10,6 +10,12 @@ Welcome to my repository! I'll leave here all the tricks I developed throughout 
 sublist3r -d subdomain.target.com -o extracted_subdomains.txt;cat extracted_subdomains.txt | httpx -silent -o verified_subdomains.txt;cat verified_subdomains.txt | awk -F[/:] '{print $4}' | anew > subdomains.txt;rm verified_subdomains.txt extracted_subdomains.txt
 ```
 
+### Extract IPs from a list of subdomains
+
+```
+for scope in $(cat subdomains.txt);do dig +short $scope | tee -a ips.txt;done
+```
+
 ### Extract parameters from a list of subdomains
 
 ```
