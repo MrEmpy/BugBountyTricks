@@ -13,7 +13,7 @@ sublist3r -d subdomain.target.com -o extracted_subdomains.txt;cat extracted_subd
 ### Extract IPs from a list of subdomains
 
 ```
-for scope in $(cat subdomains.txt);do dig +short $scope | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | tee -a ips.txt;done
+for scope in $(cat subdomains.txt);do dig +short $scope | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | anew | tee -a ips.txt;done
 ```
 
 ### Extract parameters from a list of subdomains
