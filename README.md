@@ -106,3 +106,13 @@ site:*.scope.com inurl:index.php?page=
 site:*.scope.com inurl:index.php?template=
 site:*.scope.com inurl:index.php?archive=
 ```
+
+### Sites with CMS WordPress
+
+```
+site:*.scope.com inurl:wp-content
+site:*.scope.com inurl:wp-content/uploads/<YEAR>/<MONTH>
+site:*.scope.com inurl:wp-includes
+site:*.scope.com intitle:"Author at"
+site:*.scope.com intitle:WordPress intitle:ReadMe ext:html
+```
