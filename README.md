@@ -1,5 +1,7 @@
 # 「🐞」Bug Bounty Tricks
 
+<img src="https://insights.dice.com/wp-content/uploads/2019/07/Bug-Bounty-Program-Dice.png" weight=100 height=300>
+
 Welcome to my repository! I'll leave here all the tricks I developed throughout my career as a Bug Hunter, I hope to help you.
 
 # Unix Terminal:
