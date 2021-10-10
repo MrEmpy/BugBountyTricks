@@ -70,6 +70,12 @@ assetfinder -subs-only scope.com | httpx -silent -o verified_subdomains.txt;cat 
 assetfinder -subs-only scope.com | httpx -silent | html-tool comments
 ```
 
+### Extract subdomains and parameters with name "url" and check open redirect
+
+```
+assetfinder -subs-only scope.com | waybackurls | grep 'url=' | xargs -I@ sh -c 'oralyzer -u @'
+```
+
 # Google Dorks:
 
 ### Confidential files
