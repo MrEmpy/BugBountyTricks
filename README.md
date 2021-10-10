@@ -76,6 +76,12 @@ assetfinder -subs-only scope.com | httpx -silent | html-tool comments
 assetfinder -subs-only scope.com | waybackurls | grep 'url=' | xargs -I@ sh -c 'oralyzer -u @'
 ```
 
+### Extract all subdomains with CMS WordPress
+
+```
+echo scope.com | assetfinder -subs-only | waybackurls | grep 'wp-content' | httpx -silent | awk -F[/:] '{print $4}' | anew
+```
+
 # Google Dorks:
 
 ### Confidential files
