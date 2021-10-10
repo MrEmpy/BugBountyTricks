@@ -40,16 +40,34 @@ for scope in $(cat subdomains.txt);do curl "https://web.archive.org/cdx/search/c
 SCOPE=192.168.0.0/24;RPORT=22,80,443;rustscan -b 500 -a $SCOPE -p $RPORT | grep "Open $SCOPE[0-9]*" | tee -a ports_scanned.txt
 ```
 
-### Search for possible Cross-Origin Resource Sharing (CORS) vulnerability
+### Extract JS files with GetJS
 
 ```
-corscan -l subdomains.txt -v yes -o cors
+cat subdomains.txt | getJS --complete | anew | tee -a js.txt
 ```
 
 ### Extract JS files
 
 ```
 for scope in $(cat subdomains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=$scope/*&output=text&fl=original&collapse=urlkey" | grep "\\.js" | sed -e 's/:80//' | tee -a js.txt;done
+```
+
+### Extract json files
+
+```
+cat subdomains.txt | waybackurls | grep "\\.json" | anew | tee -a json.txt
+```
+
+### Extract subdomains and capture the screen
+
+```
+assetfinder -subs-only scope.com | httpx -silent -o verified_subdomains.txt;cat verified_subdomains.txt | awk -F[/:] '{print $4}' | anew > subdomains.txt;rm verified_subdomains.txt;eyewitness -f subdomains.txt --prepend-https -d screenshots
+```
+
+### Extract subdomains and comments in source code
+
+```
+assetfinder -subs-only scope.com | httpx -silent | html-tool comments
 ```
 
 # Google Dorks:
