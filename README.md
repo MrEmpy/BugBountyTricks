@@ -9,7 +9,7 @@ Welcome to my repository! I'll leave here all the tricks I developed throughout 
 ### Extract subdomains and check if it's active
 
 ```
-sublist3r -d subdomain.target.com -o extracted_subdomains.txt;cat extracted_subdomains.txt | httpx -silent -o verified_subdomains.txt;cat verified_subdomains.txt | awk -F[/:] '{print $4}' | anew > subdomains.txt;rm verified_subdomains.txt extracted_subdomains.txt
+sublist3r -d scope.com -o extracted_subdomains.txt;cat extracted_subdomains.txt | httpx -silent -o verified_subdomains.txt;cat verified_subdomains.txt | awk -F[/:] '{print $4}' | anew > subdomains.txt;rm verified_subdomains.txt extracted_subdomains.txt
 ```
 
 ### Extract subdomains (manually)
