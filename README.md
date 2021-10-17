@@ -35,7 +35,7 @@ cat subdomains.txt | waybackurls | sed -e 's/:80//' | grep "?[a-z0-9]*="
 ### Extract parameters from a list of subdomains (manually)
 
 ```
-for scope in $(cat subdomains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=$scope/*&output=text&fl=original&collapse=urlkey" | grep "?[a-z0-9]*=" | sed -e 's/:80//' | tee -a parameters.txt;done
+for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=*.$scope/*&output=text&fl=original&collapse=urlkey" | awk -F[/:] '{print $4}' | anew | sed -e 's/:80//' | httpx -silent | awk -F[/:] '{print $4}' |tee -a subdomains.txt;done
 ```
 
 ### Scan ports on a host quickly
