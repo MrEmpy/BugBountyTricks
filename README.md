@@ -28,6 +28,8 @@ for scope in $(cat subdomains.txt);do dig +short $scope | grep -o '[0-9]\{1,3\}\
 
 ```
 for scope in $(cat subdomains.txt);do paramspider -d $scope;done;cat output/* > parameters.txt;rm -r output
+
+cat subdomains.txt | waybackurls | sed -e 's/:80//' | grep "?[a-z0-9]*="
 ```
 
 ### Extract parameters from a list of subdomains (manually)
