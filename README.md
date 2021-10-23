@@ -15,7 +15,7 @@ sublist3r -d scope.com -o extracted_subdomains.txt;cat extracted_subdomains.txt 
 ### Extract subdomains (manually)
 
 ```
-for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=*.$scope/*&output=text&fl=original&collapse=urlkey" | awk -F[/:] '{print $4}' | anew | sed -e 's/:80//' | tee -a subdomains.txt;done
+for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=*.$scope/*&output=text&fl=original&collapse=urlkey" | awk -F[/:] '{print $4}' | anew | sed -e 's/:80//' | httpx -silent | awk -F[/:] '{print $4}' | tee -a subdomains.txt;done
 ```
 
 ### Extract IPs from a list of subdomains
@@ -35,7 +35,7 @@ cat subdomains.txt | waybackurls | sed -e 's/:80//' | grep "?[a-z0-9]*="
 ### Extract parameters from a list of subdomains (manually)
 
 ```
-for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=*.$scope/*&output=text&fl=original&collapse=urlkey" | awk -F[/:] '{print $4}' | anew | sed -e 's/:80//' | httpx -silent | awk -F[/:] '{print $4}' |tee -a subdomains.txt;done
+for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=*.$scope/*&output=text&fl=original&collapse=urlkey" | grep "?[a-z0-9]*=" | sed -e 's/:80//' | tee -a parameters.txt;done
 ```
 
 ### Scan ports on a host quickly
@@ -84,6 +84,12 @@ assetfinder -subs-only scope.com | waybackurls | grep 'url=' | xargs -I@ sh -c '
 
 ```
 echo scope.com | assetfinder -subs-only | waybackurls | grep 'wp-content' | httpx -silent | awk -F[/:] '{print $4}' | anew
+```
+
+### Verify SQL Injection
+
+```
+for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=*.$scope/*&output=text&fl=original&collapse=urlkey" | grep "?[a-z0-9]*=" | sed -e 's/:80//' | gf sqli | sqlmap --risk 3 --batch --dbs;done
 ```
 
 # Google Dorks:
