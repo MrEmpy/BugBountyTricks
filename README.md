@@ -74,10 +74,10 @@ assetfinder -subs-only scope.com | httpx -silent -o verified_subdomains.txt;cat 
 assetfinder -subs-only scope.com | httpx -silent | html-tool comments
 ```
 
-### Extract subdomains and parameters with name "url" and check open redirect
+### Extract subdomains and open redirect parameters
 
 ```
-assetfinder -subs-only scope.com | waybackurls | grep 'url=' | xargs -I@ sh -c 'oralyzer -u @'
+assetfinder -subs-only scope.com | waybackurls | gf redirect | xargs -I@ sh -c 'oralyzer -u @'
 ```
 
 ### Extract all subdomains with CMS WordPress
