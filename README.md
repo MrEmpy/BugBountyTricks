@@ -106,6 +106,8 @@ site:*.scope.com ext:pdf intext:"name" intext:"email" intext:"phone" intext:"cit
 
 ```
 site:*.scope.com ext:sql
+site:*.scope.com ext:env
+site:*.scope.com ext:txt
 site:*.scope.com ext:sql intext:"Dumping data for table `users`" | `password` | `name`
 site:*.scope.com ext:txt intext:"<@domain.com>" intext:email intext:password
 ```
