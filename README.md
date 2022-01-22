@@ -10,6 +10,8 @@ Welcome to my repository! I'll leave here all the tricks I developed throughout 
 
 ```
 sublist3r -d scope.com -o extracted_subdomains.txt;cat extracted_subdomains.txt | httpx -silent -o verified_subdomains.txt;cat verified_subdomains.txt | awk -F[/:] '{print $4}' | anew > subdomains.txt;rm verified_subdomains.txt extracted_subdomains.txt
+
+cat domains.txt | assetfinder -subs-only | httpx -silent | awk -F[/:] '{print $4}' | tee -a subdomains.txt
 ```
 
 ### Extract subdomains (manually)
@@ -102,6 +104,12 @@ for x in $(cat domains.txt | assetfinder -subs-only | httpx -silent);do echo "$x
 
 ```
 cat subdomains.txt | waybackurls | gf ssrf | qsreplace <http://BURP SUITE COLLABORATOR OR NGROK> | httpx -silent -follow-redirects
+```
+
+### Verify Cross-Site Scripting (XSS)
+
+```
+cat parameters.txt | gf xss > xss_parameters.txt;dalfox file xss_parameters.txt --skip-bav -o dalfox.txt
 ```
 
 # Google Dorks:
