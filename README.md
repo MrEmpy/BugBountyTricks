@@ -4,6 +4,22 @@
 
 <p align="center">Welcome to my repository! I'll leave here all the tricks I developed throughout my career as a Bug Hunter, I hope to help you.</p>
 
+# Requirements:
+
+* </p><a href="https://github.com/tomnomnom/anew">Anew</a></p>
+* </p><a href="https://github.com/hahwul/dalfox">Dalfox</a></p>
+* </p><a href="https://github.com/FortyNorthSecurity/EyeWitness">Eyewitness</a></p>
+* </p><a href="https://github.com/003random/getJS">GetJS</a></p>
+* </p><a href="https://github.com/tomnomnom/gf">GF</a></p>
+* </p><a href="https://github.com/tomnomnom/hacks/tree/master/html-tool">HTML-Tool</a></p>
+* </p><a href="https://github.com/projectdiscovery/httpx">Httpx</a></p>
+* </p><a href="https://github.com/devanshbatham/ParamSpider">Paramspider</a></p>
+* </p><a href="https://github.com/tomnomnom/qsreplace">Qsreplace</a></p>
+* </p><a href="https://github.com/RustScan/RustScan">Rustscan</a></p>
+* </p><a href="https://github.com/sqlmapproject/sqlmap">SQLMap</a></p>
+* </p><a href="https://github.com/aboul3la/Sublist3r">Sublist3r</a></p>
+* </p><a href="https://github.com/tomnomnom/waybackurls">Waybackurls</a></p> 
+
 # Unix Terminal:
 
 ### Extract subdomains and check if it's active
