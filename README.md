@@ -136,6 +136,7 @@ cat parameters.txt | gf xss > xss_parameters.txt;dalfox file xss_parameters.txt 
 site:*.scope.com ext:pdf intext:"name" intext:"email" intext:"phone" intext:"address"
 site:*.scope.com ext:pdf intext:"name" intext:"email" intext:"<@domain.com>" intext:"phone" intext:"address"
 site:*.scope.com ext:pdf intext:"name" intext:"email" intext:"phone" intext:"city" intext:"state" intext:"zipcode"
+site:groups.google com "<TARGET>"
 ```
 
 ### Files containing credentials
