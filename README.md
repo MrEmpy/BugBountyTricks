@@ -116,6 +116,13 @@ cat domains.txt | waybackurls | grep "?[a-z0-9]*=" | sed -e 's/:80//' | gf sqli 
 for x in $(cat domains.txt | assetfinder -subs-only | httpx -silent);do echo "$x//<BURP SUITE COLLABORATOR OR NGROK>/%2F.." | httpx -silent -follow-redirects;done
 ```
 
+### Automatic Open Redirect
+
+```
+cat subdomains.txt | waybackurls | gf redirect | qsreplace <http://BURP SUITE COLLABORATOR OR NGROK> | httpx -silent -follow-redirects
+
+```
+
 ### Automatic SSRF
 
 ```
