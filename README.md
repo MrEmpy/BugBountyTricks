@@ -92,6 +92,12 @@ assetfinder -subs-only scope.com | httpx -silent -o verified_subdomains.txt;cat 
 assetfinder -subs-only scope.com | httpx -silent | html-tool comments
 ```
 
+### Extract subdomains by ASN
+
+```
+echo AS394161 | asnmap -silent | tlsx -silent -san -cn -resp-only | sort -u
+```
+
 ### Extract subdomains and open redirect parameters
 
 ```
